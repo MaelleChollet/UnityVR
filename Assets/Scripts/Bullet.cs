@@ -17,16 +17,14 @@ public class Bullet : MonoBehaviour
             TargetHit target = collision.gameObject.GetComponent<TargetHit>();
             if (target != null)
             {
-                target.Hit();
+                Rigidbody bulletRb = GetComponent<Rigidbody>();
+                Vector3 travelDirection = (bulletRb != null && bulletRb.linearVelocity.sqrMagnitude > 0.01f)
+                    ? bulletRb.linearVelocity.normalized
+                    : transform.forward;
+
+                target.Hit(travelDirection);
             }
             Destroy(gameObject);
         }
-    }
-
-    void OnCollisionStay(Collision collision)
-    {
-        // Ralentit progressivement la balle tant qu'elle est en contact avec une surface
-        Rigidbody rb = GetComponent<Rigidbody>();
-        rb.linearVelocity *= 0.98f;
     }
 }

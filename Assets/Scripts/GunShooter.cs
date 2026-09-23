@@ -9,7 +9,7 @@ public class GunShooter : MonoBehaviour
     public Transform muzzlePoint;
 
     [Header("Paramètres de tir")]
-    public float bulletSpeed = 30f;
+    public float bulletSpeed = 15f;
     public float fireRate = 0.2f; // délai minimum entre deux tirs
 
     private float lastFireTime;
