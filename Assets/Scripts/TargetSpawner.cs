@@ -35,7 +35,13 @@ public class TargetSpawner : MonoBehaviour
             GameObject prefabToSpawn = targetPrefabs[Random.Range(0, targetPrefabs.Length)];
             Instantiate(prefabToSpawn, GetRandomPositionInArea(), Quaternion.identity);
         }
+
+        if (ScoreManager.Instance != null)
+        {
+            ScoreManager.Instance.RegisterTargetSpawned();
+        }
         ScheduleNextSpawn();
+
     }
 
     Vector3 GetRandomPositionInArea()
