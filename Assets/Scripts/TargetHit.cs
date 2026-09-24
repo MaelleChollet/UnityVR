@@ -27,6 +27,11 @@ public class TargetHit : MonoBehaviour
             Instantiate(hitEffectPrefab, transform.position, effectRotation);
         }
 
+        if (ScoreManager.Instance != null)
+        {
+            ScoreManager.Instance.AddPoint();
+        }
+
         Destroy(gameObject);
     }
 }
